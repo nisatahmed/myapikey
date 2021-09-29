@@ -9,10 +9,6 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/',async(req,res)=>{
-    res.send('Hello world!!')
-});
-
-app.get('/api',async(req,res)=>{
     var list = [];
     let prom = await new Promise((resolve,reject)=>{
         onSnapshot(books, (doc) => {
@@ -25,6 +21,9 @@ app.get('/api',async(req,res)=>{
     res.send(prom);
 });
 
+app.get('/*',(req,res)=>{
+    res.send('Page not found!!!');
+});
 
 app.listen(port,()=>{
     console.log('server run @ 3000');
