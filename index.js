@@ -3,6 +3,7 @@ const cors = require('cors');
 const books =  require('./config.js');
 const { onSnapshot } = require("firebase/firestore");
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -25,6 +26,6 @@ app.get('/api',async(req,res)=>{
 });
 
 
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log('server run @ 3000');
 })
